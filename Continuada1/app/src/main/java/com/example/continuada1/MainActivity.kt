@@ -23,54 +23,51 @@ class MainActivity : AppCompatActivity() {
         var valueInvestment:String = et_compra.text.toString()
         var valueActual = et_atual.text.toString()
 
-        validateFieldTypeInvestment(investmentType)
-        validateFieldValueInvested(valueInvestment)
-        validateFieldActualValue(valueActual)
+        var a = validateFieldTypeInvestment(investmentType)
+        var b = validateFieldValueInvested(valueInvestment)
+        var c = validateFieldActualValue(valueActual)
+        if(a==true && b==true && c==true )
         calculatesRentability(valueInvestment, valueActual)
 
     }
-  fun validateFieldTypeInvestment(typeInvestment:String):String{
+  fun validateFieldTypeInvestment(typeInvestment:String):Boolean{
 
       if(typeInvestment.equals("TD") || typeInvestment.equals("TD ") ||
           typeInvestment.equals("RV") || typeInvestment.equals("RV ")) {
-          Toast.makeText(this, "Proximo Campo", Toast.LENGTH_SHORT).show()
+        //  Toast.makeText(this, "Proximo Campo", Toast.LENGTH_SHORT).show()
+          return true
       }
       else
           Toast.makeText(this, "Tipo Invalido", Toast.LENGTH_SHORT).show()
+return false
 
-return typeInvestment
       }
 
-    fun validateFieldValueInvested(valueInvestment:String):String{
+    fun validateFieldValueInvested(valueInvestment:String):Boolean{
 
-        try {
-    if(valueInvestment.toDouble() <= 0 || valueInvestment.isNullOrEmpty())
-        Toast.makeText(this, "Valor não pode ser menor que 0", Toast.LENGTH_LONG).show()
-}
-        catch (a:Exception){
-            Toast.makeText(this, "Valor não pode ser menor que 0", Toast.LENGTH_LONG).show()
-        }
-
-        return valueInvestment
+    if(valueInvestment.isNullOrEmpty()) {
+        Toast.makeText(this, "Valor investido não pode ser menor que 0", Toast.LENGTH_LONG).show()
+        return false
+    }
+    else
+        return true
     }
 
-    fun validateFieldActualValue(valueActual:String):String{
+    fun validateFieldActualValue(valueActual:String):Boolean {
 
-        try {
-            if(valueActual.toDouble() <= 0 || valueActual.isNullOrEmpty())
-                Toast.makeText(this, "Valor atual não pode ser menor que 0", Toast.LENGTH_SHORT)
-        }
-        catch (a:Exception){
+        if(valueActual.isNullOrEmpty()) {
             Toast.makeText(this, "Valor atual não pode ser menor que 0", Toast.LENGTH_LONG).show()
+            return false
         }
-
-        return valueActual
+        else
+            return true
     }
-
     fun calculatesRentability(valorCompra:String, valorAtual:String){
-        var a =validateFieldActualValue(valorAtual)
+
         var rentabilidadeNegativa = 0.0
         var rentabilidadePositiva = 0.0
+
+
 try {
     if (valorCompra > valorAtual) {
         tv_texto_rentabilidade.setTextColor(Color.RED)
@@ -90,5 +87,6 @@ catch (ex:Exception){
 }
     }
  }
+
 
 
