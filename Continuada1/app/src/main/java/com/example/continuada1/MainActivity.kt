@@ -48,7 +48,7 @@ return typeInvestment
         Toast.makeText(this, "Valor não pode ser menor que 0", Toast.LENGTH_LONG).show()
 }
         catch (a:Exception){
-
+            Toast.makeText(this, "Valor não pode ser menor que 0", Toast.LENGTH_LONG).show()
         }
 
         return valueInvestment
@@ -58,10 +58,10 @@ return typeInvestment
 
         try {
             if(valueActual.toDouble() <= 0 || valueActual.isNullOrEmpty())
-                Toast.makeText(this, "Valor atual não pode ser menor que 0", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "Valor atual não pode ser menor que 0", Toast.LENGTH_SHORT)
         }
         catch (a:Exception){
-
+            Toast.makeText(this, "Valor atual não pode ser menor que 0", Toast.LENGTH_LONG).show()
         }
 
         return valueActual
@@ -71,21 +71,23 @@ return typeInvestment
         var a =validateFieldActualValue(valorAtual)
         var rentabilidadeNegativa = 0.0
         var rentabilidadePositiva = 0.0
+try {
+    if (valorCompra > valorAtual) {
+        tv_texto_rentabilidade.setTextColor(Color.RED)
+        rentabilidadeNegativa = valorCompra.toDouble() - valorAtual.toDouble()
+        tv_texto_rentabilidade.text = "Sua rentabilidade é: - R$ ${rentabilidadeNegativa} "
+    } else if (valorCompra < valorAtual) {
+        tv_texto_rentabilidade.setTextColor(Color.GREEN)
+        rentabilidadePositiva = valorAtual.toDouble() - valorCompra.toDouble()
+        tv_texto_rentabilidade.text = "Sua rentabilidade é: + R$ ${rentabilidadePositiva}"
+    } else {
+        tv_texto_rentabilidade.setTextColor(Color.parseColor("#FFCA33"))
+        tv_texto_rentabilidade.text = "Não houve mudanças na rentabilidade, Saldo: R$ ${valorAtual}"
+    }
+}
+catch (ex:Exception){
 
-      if(valorCompra > valorAtual) {
-          tv_texto_rentabilidade.setTextColor(Color.RED)
-          rentabilidadeNegativa = valorCompra.toDouble() - valorAtual.toDouble()
-          tv_texto_rentabilidade.text = "Sua rentabilidade é: - R$ ${rentabilidadeNegativa} "
-      }
-        else if(valorCompra < valorAtual){
-          tv_texto_rentabilidade.setTextColor(Color.GREEN)
-          rentabilidadePositiva = valorAtual.toDouble() - valorCompra.toDouble()
-          tv_texto_rentabilidade.text = "Sua rentabilidade é: + R$ ${rentabilidadePositiva}"
-      }
-        else{
-          tv_texto_rentabilidade.setTextColor(Color.parseColor("#FFCA33"))
-          tv_texto_rentabilidade.text = "Não houve mudanças na rentabilidade, Saldo: R$ ${valorAtual}"
-      }
+}
     }
  }
 
