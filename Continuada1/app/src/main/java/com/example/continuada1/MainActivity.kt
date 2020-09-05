@@ -23,10 +23,11 @@ class MainActivity : AppCompatActivity() {
         var valueInvestment:String = et_compra.text.toString()
         var valueActual = et_atual.text.toString()
 
-        var a = validateFieldTypeInvestment(investmentType)
-        var b = validateFieldValueInvested(valueInvestment)
-        var c = validateFieldActualValue(valueActual)
-        if(a==true && b==true && c==true )
+        var firstFieldValidation = validateFieldTypeInvestment(investmentType)
+        var secondFieldValidation = validateFieldValueInvested(valueInvestment)
+        var thirdFieldValidation = validateFieldActualValue(valueActual)
+
+        if(firstFieldValidation == true && secondFieldValidation == true && thirdFieldValidation==true )
         calculatesRentability(valueInvestment, valueActual)
 
     }
