@@ -19,10 +19,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val novaTextView = TextView(baseContext)
-
-        val ll_conteudo = findViewById<LinearLayout>(R.id.ll_conteudo)
-
     }
 
     fun goToGalleryActivity(){
@@ -38,12 +34,14 @@ class MainActivity : AppCompatActivity() {
     fun getIdols(View: View){
 
         val getIdolsIntance: Call<List<Idolos>> = RetrofitImplementation().criarRequisiçoes().getIdolos()
-        val novaTextView = TextView(baseContext)
 
-        val ll_conteudo = findViewById<LinearLayout>(R.id.ll_conteudo)
+
         getIdolsIntance.enqueue(object : Callback<List<Idolos>>{
             override fun onResponse(call: Call<List<Idolos>>, response: Response<List<Idolos>>) {
                 val idolos = response.body()?.forEach{
+                    val novaTextView = TextView(baseContext)
+
+                    val ll_conteudo = findViewById<LinearLayout>(R.id.ll_conteudo)
                     novaTextView.text = "Id: ${it.id}, Nome: ${it.Nome}, Posição: ${it.Posicao}, Primeira Copa: " +
                             "${it.AnoPrimeiraCopa}, Quantas Copas: ${it.QtdCopas}"
 
