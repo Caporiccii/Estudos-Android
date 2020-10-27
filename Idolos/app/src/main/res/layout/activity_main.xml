@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""/>
+
+
+
+    <ImageView
+        app:layout_constraintTop_toBottomOf="@id/tv"
+        android:id="@+id/iv_bandeira"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/images"
+        android:layout_marginTop="100dp"
+        tools:layout_editor_absoluteX="59dp"
+        tools:layout_editor_absoluteY="113dp"
+        />
+
+
+
+    <Button
+        app:layout_constraintTop_toBottomOf="@id/iv_bandeira"
+        android:layout_marginTop="40dp"
+        android:id="@+id/bt_get_idolos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        style="@style/button_Main_Activity"
+        android:background="@drawable/style_button"
+        android:text="@string/lista_idolo"
+        android:layout_marginLeft="130dp"
+        android:onClick="getIdols"
+           />
+
+
+    <Button
+        app:layout_constraintTop_toBottomOf="@id/iv_bandeira"
+        android:id="@+id/bt_post_idolos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintRight_toRightOf="parent"
+        style="@style/button_Main_Activity"
+        android:background="@drawable/style_button"
+        android:text="@string/adiciona_idolo"
+        app:layout_constraintRight_toLeftOf="@id/bt_get_idolos"
+        android:layout_marginRight="35dp"
+        android:layout_marginTop="40dp"
+        android:onClick="redirectIdol"
+        />
+
+    <ScrollView android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/bt_get_idolos">
+        <LinearLayout android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/ll_conteudo"
+            android:orientation="vertical">
+
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

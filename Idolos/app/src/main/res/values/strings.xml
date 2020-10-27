@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Idolos</string>
+    <string name="busca_idolo">Busca Idolo</string>
+    <string name="lista_idolo">Lista Idolos</string>
+    <string name="adiciona_idolo">Adiciona Idolo</string>
+</resources>
